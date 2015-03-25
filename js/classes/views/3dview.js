@@ -1,27 +1,3 @@
-/*
-Copyright 2013 Alex Greenland
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
- */
-
-/* Options for JS Lint http://www.jslint.com/
-* 
-* Last Checked: 09/03/2014
-* 
-*/
-/*jslint white: true, nomen: true */
-/*global document, jQuery, AGSatTrack, AGSETTINGS, AGIMAGES, AGUTIL, AGVIEWS, AGWINDOWMANAGER, AGOBSERVER, Cesium, console */
-
 var AG3DVIEW = function(element) {
     'use strict';
 
@@ -71,25 +47,7 @@ var AG3DVIEW = function(element) {
     } else {
         _element = element;
     }
-        
-    /*
-    jQuery(window).resize(function() {
-        if (canvas === null) {
-            return;
-        }
-        var height = jQuery('.layout-panel-center').innerHeight();
-        var width = jQuery('.layout-panel-center').innerWidth();
 
-        if (canvas.width === width && canvas.height === height) {
-            return;
-        }
-
-        canvas.width = width;
-        canvas.height = height;
-
-        scene.camera.frustum.aspectRatio = width / height;
-    });
-      */
     function resize(width, height) {
         if (typeof width === 'undefined' || typeof height === 'undefined') {
             var parent = jQuery('#'+_element);
@@ -116,6 +74,7 @@ var AG3DVIEW = function(element) {
             function(e, observer) {
                 if (AGSETTINGS.getHaveWebGL()) {
                     _settings = AGSETTINGS.getViewSettings('threed');
+                    console.log('images/maps/' + _settings.staticimage);
                     TILE_PROVIDERS.staticimage.provider =  new Cesium.SingleTileImageryProvider({
                         url : 'images/maps/' + _settings.staticimage
                     });
@@ -124,7 +83,7 @@ var AG3DVIEW = function(element) {
                     }
                     createSatellites();
                     plotObservers();
-                    setTerrainProvider(_settings.useTerrainProvider);
+                    //setTerrainProvider(_settings.useTerrainProvider);
                     if (AGSETTINGS.getViewSettings('threed').showCities) {
                         jQuery('#3d-show-cities').setState(true);
                         plotCities();
@@ -134,8 +93,6 @@ var AG3DVIEW = function(element) {
                     }                    
                 }
             }); 
-       
-       
 
     jQuery(document).bind('agsattrack.locationAvailable',
             function(e, observer) {
@@ -199,7 +156,6 @@ var AG3DVIEW = function(element) {
                 }
             });
                 
-
     jQuery(document).bind('agsattrack.followsatelliteview',
             function(e, follow) {
                 if (AGSETTINGS.getHaveWebGL()) {
@@ -1136,11 +1092,12 @@ var AG3DVIEW = function(element) {
                 provider : new Cesium.OpenStreetMapImageryProvider({
                     url : 'http://otile1.mqcdn.com/tiles/1.0.0/osm'
                 }),
-                toolbarTitle : 'Open Street maps'                
+                toolbarTitle : 'Open Street maps'
             },
-            'staticimage' : { 
+            'staticimage' : {
                 provider : new Cesium.SingleTileImageryProvider({
-                    url : 'images/maps/' + _settings.staticimage
+                    url : 'images/maps/' + _settings.staticimage,
+                    maximumLevel : 5
                 }),
                 toolbarTitle : 'Static Image'
             },
@@ -1149,8 +1106,8 @@ var AG3DVIEW = function(element) {
                     {url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer',
                     proxy: new Cesium.DefaultProxy('http://cesium.agi.com/proxy/')
                 }),
-                toolbarTitle : 'Arc Gis'                
-            }            
+                toolbarTitle : 'Arc Gis'
+            }
         };
            
         canvas = jQuery('<canvas/>', {
