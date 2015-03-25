@@ -51,7 +51,7 @@ var AGSPMENGINE = (function() {
             }
         }
         
-        yepnope.injectJs('/js/classes/spmengines/' + spmEngine + '/satellite.js', function(){
+        yepnope.injectJs('/agsattrack/js/classes/spmengines/' + spmEngine + '/satellite.js', function(){
             var spmEngineFiles = AGSATELLITE.getFiles();
             yepnope({
                 test: 1===1,
