@@ -28,7 +28,7 @@ var AGTLES = function() {
 	var updateUrl = 'index.php?controller=elements&method=updateElementGroup&group=';
 	var _group = '';
     var _groupName = '';
-	var rawKeps = '';
+	var rawKeps = ''; //原始一行行tle数据,
 	var satellites = [];
 	var satIndex;
     var sat;
@@ -116,7 +116,7 @@ var AGTLES = function() {
             var groupData = jQuery('#sat-group-selector-listbox').jqxListBox('getItemByValue', group);
             if (typeof groupData !== 'undefined') {
                 _groupName = groupData.label;
-                rawKeps = data.keps.split('\n');
+                rawKeps = data.keps.split('\n');//data为未分行的原始数据,rawKeps为分行后的原始数据
                 processRawData();
                 
                 if (data.averageage >= data.updateat) {

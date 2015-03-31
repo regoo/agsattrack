@@ -31,6 +31,12 @@ var AGVIEWS = (function(element) {
             index: 'Home View',
             tabIndex: 1
         },
+        'list' : {
+            classname : 'AGLISTVIEW',
+            active : false,
+            index: 'List',
+            tabIndex: 2
+        },
         '3d' : {
             classname : 'AG3DVIEW',
             active : false,
@@ -43,34 +49,28 @@ var AGVIEWS = (function(element) {
             index: 'Passes',
             tabIndex: 4
         },
+        'polar' : {
+            classname : 'AGPOLARVIEW',
+            active : false,
+            index: 'Polar View',
+            tabIndex: 5
+        },
         'sky' : {
             classname : 'AGSKYVIEW',
             active : false,
             index: 'Sky View',
             tabIndex: 6            
         },
-        'polar' : {
-            classname : 'AGPOLARVIEW',
+        'options' : {
+            classname : 'AGOPTIONS',
             active : false,
-            index: 'Polar View',
-            tabIndex: 5           
-        },
-        'list' : {
-            classname : 'AGLISTVIEW',
-            active : false,
-            index: 'List',
-            tabIndex: 2            
+            index: 6
         },
         'timeline' : {
             classname : 'AGTIMELINE',
             active : false,
             index: 'Timeline View',
             tabIndex: 7              
-        },
-        'options' : {
-            classname : 'AGOPTIONS',
-            active : false,
-            index: 6
         },
         'debug' : {
             classname : 'AGDEBUG',
