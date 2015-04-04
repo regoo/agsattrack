@@ -492,5 +492,5 @@ var AGSATELLITE = function(tle0, tle1, tle2) {
 AGSATELLITE.getFiles = function() {
     'use strict';
         
-    return ['/agsattrack/js/classes/spmengines/predictlib/predictlib.js'];
+    return ['/js/classes/spmengines/predictlib/predictlib.js'];
 };
